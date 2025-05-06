@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ranking</title>
+    <link rel="stylesheet" href="/rankingstyles.css">
+</head>
+<body>
+    <h1>Player Rankings</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Attempts</th>
+        </tr>
+        <tr th:each="player : ${players}">
+            <td th:text="${player[0]}"></td>
+            <td th:text="${player[1]}"></td>
+        </tr>
+    </table>
+    <p><a href="/game">Back to game</a></p>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess the number</title>
+    <link rel="stylesheet" href="/gamestyles.css">
+</head>
+<body>
+    <h1>Guess the number (between 1 and 100)</h1>
+
+    <form action="/game" method="get">
+    <h2> <p th:if="${playerName}" >Player: <span th:text="${playerName}"></span></p> </h2>
+    <label for="name" th:if="${playerName == null}">Enter your name:</label>
+    <input type="text" name="name" th:if="${playerName == null}" required>
+    <br>
+    <label for="guess">Your guess:</label>
+    <input type="number" name="guess" required>
+    <button type="submit">Try!</button>
+</form>
+
+    <h2 th:if="${playerName}" >Previous Attempts:</h2>
+    <ul>
+        <li th:each="attempt : ${attempts}" th:text="${attempt}"></li>
+    </ul>
+
+    <p th:if="${message == 'You guessed it!'}" class="victory-message" th:text="${message}"></p>
+
+    <div th:if="${showResetButton}">
+        <form action="/reset" method="get">
+            <button type="submit">New game</button>
+        </form>
+    </div>
+    
+    <p><a href="/ranking">View rankings</a></p>
+    
+</body>
+</html>
